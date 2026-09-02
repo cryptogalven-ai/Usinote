@@ -48,21 +48,40 @@ h1 span { color: #ff7900; }
 .question { font-size: 29px; line-height: 1.12; margin: 0 0 10px; }
 .step-copy { color: #8f989f; margin: 0 0 24px; line-height: 1.5; }
 .answers { display: grid; gap: 10px; }
-.answer { border: 1px solid #30363c; background: #15191d; color: #f4f5f6; border-radius: 14px; padding: 17px; text-align: left; cursor: pointer; }
+.answer { display: flex; align-items: center; justify-content: space-between; border: 1px solid #30363c; background: #15191d; color: #f4f5f6; border-radius: 14px; padding: 17px; text-align: left; cursor: pointer; }
+.answer span { color: #707a82; font-size: 18px; }
 .answer:hover { border-color: #ff7900; }
-.result { border: 1px solid #30363c; border-radius: 18px; padding: 20px; background: #15191d; }
-.result-label { color: #ff7900; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; font-weight: 700; }
-.result h2 { margin: 8px 0 12px; font-size: 24px; line-height: 1.15; }
-.result > p { color: #b5bcc2; line-height: 1.55; margin: 0 0 18px; }
-.checklist { display: grid; gap: 8px; margin: 18px 0; }
+.result-page { display: grid; gap: 14px; }
+.result-hero { border: 1px solid #3a3028; border-radius: 18px; padding: 22px 20px; background: linear-gradient(145deg, #1b1815, #121415); }
+.result-label { color: #ff7900; text-transform: uppercase; letter-spacing: .12em; font-size: 10px; font-weight: 800; }
+.result-hero h2 { margin: 9px 0 10px; font-size: 28px; line-height: 1.05; }
+.result-hero p { color: #b5bcc2; line-height: 1.5; margin: 0; font-size: 13px; }
+.result-section-title { color: #727c84; font-size: 10px; font-weight: 800; letter-spacing: .15em; margin: 10px 2px 0; }
+.recommendations { display: grid; gap: 10px; }
+.recommendation { border: 1px solid #3a3030; border-radius: 16px; padding: 17px; background: #121517; }
+.recommendation-head { margin-bottom: 15px; }
+.priority { display: inline-block; padding: 5px 7px; border-radius: 6px; background: #3a2929; color: #ff9c9c; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.recommendation h3 { margin: 9px 0 0; font-size: 18px; line-height: 1.25; }
+.recommendation-block { padding: 12px 0; border-top: 1px solid #252b30; }
+.recommendation-block b, .action b { display: block; color: #f0f2f3; font-size: 10px; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 6px; }
+.recommendation-block p, .action p { color: #aab2b8; line-height: 1.5; margin: 0; font-size: 13px; }
+.recommendation-block ul { margin: 0; padding-left: 17px; color: #aab2b8; font-size: 13px; line-height: 1.65; }
+.action { margin-top: 4px; padding: 13px; border-radius: 11px; background: #1b1d1f; border: 1px solid #2b3136; }
+.action b { color: #ff8a18; }
+.unknown-panel { padding: 14px; border: 1px solid #4a422e; border-radius: 13px; background: #1b1913; }
+.unknown-panel b { color: #e5cf91; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+.unknown-panel p { color: #b8b09a; margin: 7px 0 0; font-size: 12px; line-height: 1.5; }
+.checklist { display: grid; gap: 8px; }
 .check { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border: 1px solid #282e34; border-radius: 12px; background: #101316; }
 .check-status { width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border-radius: 50%; font-weight: 800; font-size: 13px; }
 .check-status.ok { background: #26332b; color: #b9d7c2; }
 .check-status.issue { background: #3a2929; color: #f1b0b0; }
 .check-status.unknown { background: #39352a; color: #e5cf91; }
-.check-label { font-size: 14px; line-height: 1.35; }
-.check-answer { margin-top: 4px; color: #858e96; font-size: 12px; font-weight: 700; }
+.check-label { font-size: 13px; line-height: 1.35; }
+.check-answer { margin-top: 4px; color: #858e96; font-size: 11px; font-weight: 700; }
+.result-actions { display: grid; gap: 0; margin-top: 2px; }
 .secondary { width: 100%; margin-top: 12px; border: 1px solid #30363c; background: transparent; color: #f4f5f6; border-radius: 14px; padding: 16px; cursor: pointer; }
+.source-note { color: #606a72; font-size: 10px; line-height: 1.5; text-align: center; margin: 8px 10px 0; }
 .footer { color: #4f5961; font-size: 9px; text-align: center; margin-top: 26px; letter-spacing: .12em; }
 
 @media (min-width: 700px) { .cards { grid-template-columns: 1fr 1fr; } .hero { padding: 42px 30px 28px; } }
