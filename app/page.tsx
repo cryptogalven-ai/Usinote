@@ -63,7 +63,7 @@ export default function Home() {
     setAnswers([]);
   }
 
-  const finished = diagnostic && step >= diagnostic.questions.length;
+  const finished = diagnostic ? step >= diagnostic.questions.length : false;
   const firstIssue = answers.findIndex((answer) => answer === "Non");
 
   return (
@@ -100,15 +100,15 @@ export default function Home() {
         ) : (
           <section>
             <button className="back" onClick={reset}>← Retour</button>
-            <div className="progress"><span style={{ width: `${finished ? 100 : ((step + 1) / diagnostic.questions.length) * 100}%` }} /></div>
+            <div className="progress"><span style={{ width: `${finished ? 100 : ((step + 1) / diagnostic!.questions.length) * 100}%` }} /></div>
 
             {!finished ? (
               <>
-                <div className="eyebrow">Étape {step + 1} / {diagnostic.questions.length}</div>
-                <h1 className="question">{diagnostic.questions[step].label}</h1>
+                <div className="eyebrow">Étape {step + 1} / {diagnostic!.questions.length}</div>
+                <h1 className="question">{diagnostic!.questions[step].label}</h1>
                 <p className="step-copy">Réponds simplement. On passe ensuite au contrôle suivant.</p>
                 <div className="answers">
-                  {diagnostic.questions[step].options.map((option) => (
+                  {diagnostic!.questions[step].options.map((option) => (
                     <button className="answer" key={option} onClick={() => answer(option)}>{option}</button>
                   ))}
                 </div>
@@ -117,8 +117,8 @@ export default function Home() {
               <div className="result">
                 <div className="result-label">Diagnostic terminé</div>
                 <h2>{firstIssue >= 0 ? "Point à contrôler" : "Contrôles terminés"}</h2>
-                <p>{firstIssue >= 0 ? diagnostic.questions[firstIssue].label : "Aucune anomalie signalée dans les contrôles de cette V0."}</p>
-                <button className="secondary" onClick={() => start(problem)}>Recommencer le diagnostic</button>
+                <p>{firstIssue >= 0 ? diagnostic!.questions[firstIssue].label : "Aucune anomalie signalée dans les contrôles de cette V0."}</p>
+                <button className="secondary" onClick={() => start(problem as Exclude<Problem, "home">)}>Recommencer le diagnostic</button>
                 <button className="secondary" onClick={reset}>Choisir un autre problème</button>
               </div>
             )}
