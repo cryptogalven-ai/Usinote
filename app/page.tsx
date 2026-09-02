@@ -73,32 +73,59 @@ export default function Home() {
     <main className="page">
       <div className="shell">
         <header className="header">
-          <p className="brand">USINOTE</p>
-          <p className="tagline">Le savoir-faire de l’usinage, à portée de main.</p>
+          <div className="brand-mark">U</div>
+          <div>
+            <p className="brand">USINOTE</p>
+            <p className="brand-subtitle">DIAGNOSTIC D’USINAGE</p>
+          </div>
         </header>
 
         {problem === "home" ? (
           <>
             <section className="hero">
-              <div className="eyebrow">Diagnostic d’usinage</div>
-              <h1>Quel est ton problème ?</h1>
-              <p className="intro">Décris ton problème à travers quelques contrôles simples. USINOTE avance étape par étape.</p>
-              <button className="primary" onClick={() => start("broken")}>🔧 J’AI UN PROBLÈME D’USINAGE</button>
+              <div className="hero-glow" />
+              <div className="eyebrow">ASSISTANT DE L’USINEUR</div>
+              <h1>Le bon diagnostic.<br /><span>Au bon moment.</span></h1>
+              <p className="intro">Identifiez rapidement vos problèmes d’usinage grâce à une méthode simple, structurée et pensée pour l’atelier.</p>
+              <div className="hero-points">
+                <span>◉ Méthode pas à pas</span>
+                <span>◇ Conseils techniques fiables</span>
+                <span>↗ Données fabricants &amp; expérience terrain</span>
+              </div>
+              <button className="primary" onClick={() => start("broken")}>
+                <span><strong>DIAGNOSTIQUER</strong><small>J’AI UN PROBLÈME D’USINAGE</small></span>
+                <b>→</b>
+              </button>
             </section>
-            <section>
-              <p className="section-title">V0 — Diagnostics disponibles</p>
+
+            <section className="problems">
+              <div className="section-heading">
+                <div><p className="section-kicker">DIAGNOSTIC</p><h2>Problèmes courants</h2></div>
+                <span>V0</span>
+              </div>
               <div className="cards">
-                <button className="card" onClick={() => start("broken")}>
-                  <div className="card-title">🔴 Outil qui casse</div>
-                  <div className="card-copy">Trouver la cause, dans l’ordre.</div>
+                <button className="card card-broken" onClick={() => start("broken")}>
+                  <div className="card-icon">✦</div>
+                  <div className="card-title">Outil cassé</div>
+                  <div className="card-copy">Diagnostiquer les causes de casse d’outil.</div>
+                  <div className="card-action">DIAGNOSTIQUER <b>→</b></div>
                 </button>
-                <button className="card" onClick={() => start("vibrations")}>
-                  <div className="card-title">🟠 Vibrations</div>
-                  <div className="card-copy">Identifier le point à contrôler en priorité.</div>
+                <button className="card card-vibration" onClick={() => start("vibrations")}>
+                  <div className="card-icon">≈</div>
+                  <div className="card-title">Vibrations</div>
+                  <div className="card-copy">Identifier l’origine des vibrations.</div>
+                  <div className="card-action">DIAGNOSTIQUER <b>→</b></div>
                 </button>
               </div>
             </section>
-            <p className="footer">USINOTE V0 · Prototype</p>
+
+            <section className="trust-strip">
+              <div><b>FIABLE</b><span>Des recommandations documentées.</span></div>
+              <div><b>PRÉCIS</b><span>Une méthode logique et structurée.</span></div>
+              <div><b>RAPIDE</b><span>Des contrôles directement exploitables.</span></div>
+            </section>
+
+            <p className="footer">USINOTE V0 · PROTOTYPE</p>
           </>
         ) : (
           <section>
