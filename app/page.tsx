@@ -65,6 +65,9 @@ export default function Home() {
 
   const finished = diagnostic ? step >= diagnostic.questions.length : false;
   const firstIssue = answers.findIndex((answer) => answer === "Non");
+  const unknowns = diagnostic
+    ? diagnostic.questions.filter((_, index) => answers[index] === "Je ne sais pas")
+    : [];
 
   return (
     <main className="page">
@@ -104,7 +107,7 @@ export default function Home() {
 
             {!finished ? (
               <>
-                <div className="eyebrow">Étape {step + 1} / {diagnostic!.questions.length}</div>
+                <div className="eyebrow">{diagnostic!.title} · Étape {step + 1} / {diagnostic!.questions.length}</div>
                 <h1 className="question">{diagnostic!.questions[step].label}</h1>
                 <p className="step-copy">Réponds simplement. On passe ensuite au contrôle suivant.</p>
                 <div className="answers">
@@ -116,8 +119,29 @@ export default function Home() {
             ) : (
               <div className="result">
                 <div className="result-label">Diagnostic terminé</div>
-                <h2>{firstIssue >= 0 ? "Point à contrôler" : "Contrôles terminés"}</h2>
-                <p>{firstIssue >= 0 ? diagnostic!.questions[firstIssue].label : "Aucune anomalie signalée dans les contrôles de cette V0."}</p>
+                <h2>{firstIssue >= 0 ? "Point à contrôler en priorité" : unknowns.length > 0 ? "Points à vérifier" : "Contrôles terminés"}</h2>
+                <p>
+                  {firstIssue >= 0
+                    ? diagnostic!.questions[firstIssue].label
+                    : unknowns.length > 0
+                      ? "Certains contrôles n’ont pas pu être confirmés."
+                      : "Aucune anomalie signalée dans les contrôles de cette V0."}
+                </p>
+
+                <div className="checklist">
+                  {diagnostic!.questions.map((question, index) => (
+                    <div className="check" key={question.label}>
+                      <span className={`check-status ${answers[index] === "Non" ? "issue" : answers[index] === "Je ne sais pas" ? "unknown" : "ok"}`}>
+                        {answers[index] === "Non" ? "!" : answers[index] === "Je ne sais pas" ? "?" : "✓"}
+                      </span>
+                      <div>
+                        <div className="check-label">{question.label}</div>
+                        <div className="check-answer">{answers[index]}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
                 <button className="secondary" onClick={() => start(problem as Exclude<Problem, "home">)}>Recommencer le diagnostic</button>
                 <button className="secondary" onClick={reset}>Choisir un autre problème</button>
               </div>
